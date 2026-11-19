@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Convierte una traza GPX (grabada con el celular) en una ruta de StationNow y
+// Convierte una traza GPX (grabada con el celular) en una ruta de Stationnow y
 // la agrega o reemplaza en public/data/rutas.geojson.
 //
 // Uso:

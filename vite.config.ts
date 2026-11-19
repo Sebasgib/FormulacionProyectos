@@ -17,8 +17,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: false, // se registra en src/main.tsx
       manifest: {
-        name: 'StationNow',
-        short_name: 'StationNow',
+        name: 'Stationnow',
+        short_name: 'Stationnow',
         description: 'Rutas de buseta en Cúcuta, también sin conexión.',
         lang: 'es-CO',
         start_url: '/',

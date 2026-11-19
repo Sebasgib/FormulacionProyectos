@@ -1,4 +1,4 @@
-# StationNow
+# Stationnow
 
 PWA para consultar rutas de buseta en Cúcuta. Funciona sin conexión después de la primera visita.
 
