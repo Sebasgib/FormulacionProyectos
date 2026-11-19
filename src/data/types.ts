@@ -45,6 +45,13 @@ export interface Lugar {
   tipo: TipoLugar
 }
 
+/** Origen o destino de un viaje. Si viene del GPS, solo vive en memoria. */
+export interface PuntoViaje {
+  coord: Coordenada
+  nombre: string
+  fuente: 'gps' | 'lugar' | 'mapa' | 'simulado'
+}
+
 // ---- Forma de los archivos en public/data/ ----
 
 export type PropiedadesRuta = Omit<Ruta, 'geometria'>

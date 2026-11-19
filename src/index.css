@@ -30,7 +30,7 @@ body {
 
 .offline-badge {
   position: fixed;
-  top: calc(10px + env(safe-area-inset-top));
+  top: calc(var(--alto-panel, 0px) + 8px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -38,7 +38,7 @@ body {
   border-radius: 999px;
   background: #3a3a3a;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.25);
   pointer-events: none;
@@ -55,9 +55,14 @@ body {
   bottom: var(--alto-hoja, 0px);
 }
 
+/* Los botones de zoom bajan por debajo del buscador. */
+.maplibregl-map .maplibregl-ctrl-top-right {
+  top: var(--alto-panel, 0px);
+}
+
 .aviso-error {
   position: fixed;
-  top: calc(10px + env(safe-area-inset-top));
+  top: calc(var(--alto-panel, 0px) + 52px);
   left: 12px;
   right: 64px;
   z-index: 10;
@@ -245,13 +250,364 @@ body {
   font-weight: 700;
 }
 
-.ficha__paraderos li.destacado {
+.ficha__paraderos li.destacado,
+.ficha__paraderos li.abordaje {
   background: #e6f4ef;
   font-weight: 700;
 }
 
-.ficha__tocado {
+.ficha__paraderos li.bajada {
+  background: #fdecee;
+  font-weight: 700;
+}
+
+/* #0b5e48 / #e6f4ef ≈ 6,9:1 · #9f1239 / #fdecee ≈ 7:1 */
+.ficha__marca--destacado,
+.ficha__marca--abordaje {
   color: #0b5e48;
+}
+
+.ficha__marca--bajada {
+  color: #9f1239;
+}
+
+/* ---------- Botones comunes (≥ 44 px de alto) ---------- */
+.boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  margin: 0 0 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* blanco / #0f7b5f = 5,2:1 */
+.boton--primario {
+  border: 0;
+  background: var(--color-primario);
+  color: #ffffff;
+}
+
+.boton--primario:disabled {
+  background: #4a4a4a;
+  cursor: progress;
+}
+
+.boton--secundario {
+  border: 2px solid #8a8a8a;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+/* #0b5e48 / #fff ≈ 7,6:1 */
+.boton-texto,
+.boton-volver {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #0b5e48;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.boton-volver {
+  display: block;
+  margin: 0 0 6px -10px;
+}
+
+.boton:focus-visible,
+.boton-texto:focus-visible,
+.boton-volver:focus-visible,
+.resultado:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.texto-privacidad,
+.texto-ayuda {
+  margin: 0 0 12px;
+}
+
+.separador {
+  margin: 8px 0;
+  color: var(--texto-secundario);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* #7c2d12 / #fef3c7 ≈ 9:1 */
+.aviso {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-left: 5px solid #b45309;
+  border-radius: 8px;
+  background: #fef3c7;
+  color: #7c2d12;
+  font-weight: 600;
+}
+
+/* ---------- Buscador ---------- */
+.panel-busqueda {
+  position: fixed;
+  top: calc(8px + env(safe-area-inset-top));
+  left: 8px;
+  right: 8px;
+  z-index: 15;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 6px 8px 8px;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: 16px;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 0.22);
+}
+
+.panel-busqueda__origen {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 6px;
+}
+
+.panel-busqueda__desde {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #4a4a4a;
+}
+
+.panel-busqueda__desde strong {
+  color: #1a1a1a;
+}
+
+.buscador {
+  position: relative;
+}
+
+.buscador__campo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 0 4px 0 12px;
+  border: 2px solid #6b6b6b;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.buscador__campo:focus-within {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 2px rgb(15 123 95 / 0.35);
+}
+
+.buscador__lupa {
+  flex: none;
+  color: #4a4a4a;
+}
+
+.buscador__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #1a1a1a;
+  font: inherit;
+  font-size: 18px; /* ≥ 16 px: además evita el zoom automático de iOS */
+}
+
+/* #595959 / #fff = 7:1 */
+.buscador__input::placeholder {
+  color: #595959;
+  opacity: 1;
+}
+
+.buscador__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.buscador__limpiar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.buscador__lista {
+  margin: 6px 0 10px;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+/* En la barra de arriba las sugerencias flotan sobre el mapa. */
+.panel-busqueda .buscador__lista {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.2);
+}
+
+.buscador__lista li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 52px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buscador__lista li.activo,
+.buscador__lista li[role='option']:hover {
+  background: #e6f4ef;
+}
+
+.buscador__nombre {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.buscador__tipo {
+  color: #4a4a4a;
+  font-size: 16px;
+}
+
+.buscador__lista li.buscador__vacio {
+  color: #4a4a4a;
+  cursor: default;
+}
+
+/* ---------- Resultados ---------- */
+.viaje-resumen {
+  margin: 0 0 12px;
+}
+
+.resultados {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resultado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 2px solid #c8c8c8;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.resultado .etiqueta-demo {
+  margin: 2px 0;
+}
+
+.resultado__nombre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.resultado__secundario {
+  color: #4a4a4a;
+}
+
+/* ---------- Marcadores del viaje ---------- */
+.marcador--origen {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #1d4ed8;
+  box-shadow: 0 0 0 2px rgb(29 78 216 / 0.35), 0 1px 4px rgb(0 0 0 / 0.4);
+}
+
+.marcador--destino {
+  width: 26px;
+  height: 34px;
+  background: #1f2937;
+  clip-path: path('M13 34 C13 34 0 20 0 13 A13 13 0 0 1 26 13 C26 20 13 34 13 34 Z');
+}
+
+.marcador--abordaje {
+  width: 26px;
+  height: 26px;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: #15803d;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.45);
+}
+
+.marcador--bajada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* blanco / #b91c1c = 6,5:1 */
+.marcador__etiqueta {
+  padding: 4px 10px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: #b91c1c;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.45);
+}
+
+.marcador__pin {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: #b91c1c;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.45);
 }
 
 .ficha__verificacion {

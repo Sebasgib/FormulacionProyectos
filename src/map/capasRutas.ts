@@ -1,16 +1,19 @@
 import type {
   DataDrivenPropertyValueSpecification,
   ExpressionSpecification,
+  GeoJSONSource,
   GeoJSONSourceSpecification,
   LngLatBoundsLike,
   Map as MapLibreMap,
   PointLike,
 } from 'maplibre-gl'
 import type { DatosRutas } from '../data/cargarDatos'
-import type { Ruta } from '../data/types'
+import type { Coordenada } from '../data/types'
 
 const FUENTE_RUTAS = 'rutas'
 const FUENTE_PARADEROS = 'paraderos'
+const FUENTE_CAMINATA = 'caminata'
+const CAPA_CAMINATA = 'caminata-linea'
 const CAPA_RUTAS_BORDE = 'rutas-borde'
 export const CAPA_RUTAS = 'rutas-linea'
 export const CAPA_PARADEROS = 'paraderos-circulo'
@@ -86,6 +89,16 @@ export function agregarCapasRutas(map: MapLibreMap, datos: DatosRutas) {
     },
     primeraEtiqueta,
   )
+  // Tramos a pie del viaje elegido (origen → abordaje, bajada → destino).
+  map.addSource(FUENTE_CAMINATA, { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
+  map.addLayer({
+    id: CAPA_CAMINATA,
+    type: 'line',
+    source: FUENTE_CAMINATA,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#1f2937', 'line-width': 3.5, 'line-dasharray': [0.1, 2] },
+  })
+
   // Los paraderos van encima de todo para que ninguna etiqueta los tape.
   map.addLayer({
     id: CAPA_PARADEROS,
@@ -100,11 +113,19 @@ export function agregarCapasRutas(map: MapLibreMap, datos: DatosRutas) {
   })
 }
 
-/** Atenúa las demás rutas y sube la elegida encima. `null` = todas normales. */
-export function resaltarRuta(map: MapLibreMap, rutaId: string | null) {
+/**
+ * Atenúa las demás rutas y sube la elegida encima. `null` = todas normales.
+ * Con `soloEsa`, las demás se ocultan del todo (filtro: tampoco se pueden tocar).
+ */
+export function resaltarRuta(map: MapLibreMap, rutaId: string | null, soloEsa = false) {
   if (!map.getLayer(CAPA_RUTAS)) return
   const esElegida: ExpressionSpecification = ['==', ['get', 'id'], rutaId ?? '']
   const esDeElegida: ExpressionSpecification = ['==', ['get', 'rutaId'], rutaId ?? '']
+
+  const filtrar = soloEsa && rutaId !== null
+  map.setFilter(CAPA_RUTAS_BORDE, filtrar ? esElegida : null)
+  map.setFilter(CAPA_RUTAS, filtrar ? esElegida : null)
+  map.setFilter(CAPA_PARADEROS, filtrar ? esDeElegida : null)
   const opacidadLinea: DataDrivenPropertyValueSpecification<number> = rutaId
     ? ['case', esElegida, 1, 0.25]
     : 1
@@ -147,9 +168,18 @@ export function rutasEnPunto(map: MapLibreMap, x: number, y: number): OpcionToqu
   return [...opciones.values()]
 }
 
-export function limitesRuta(ruta: Ruta): LngLatBoundsLike {
+/** Dibuja los tramos a pie (pares de puntos). Lista vacía = borrar. */
+export function dibujarCaminata(map: MapLibreMap, tramos: [Coordenada, Coordenada][]) {
+  const fuente = map.getSource<GeoJSONSource>(FUENTE_CAMINATA)
+  fuente?.setData({
+    type: 'FeatureCollection',
+    features: tramos.map((t) => ({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: t } })),
+  })
+}
+
+export function limites(puntos: readonly Coordenada[]): LngLatBoundsLike {
   let oeste = Infinity, sur = Infinity, este = -Infinity, norte = -Infinity
-  for (const [lng, lat] of ruta.geometria.coordinates) {
+  for (const [lng, lat] of puntos) {
     oeste = Math.min(oeste, lng)
     este = Math.max(este, lng)
     sur = Math.min(sur, lat)

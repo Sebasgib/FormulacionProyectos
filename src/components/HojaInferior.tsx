@@ -1,6 +1,8 @@
 import { type ReactNode, useId, useLayoutEffect, useRef } from 'react'
 
 interface Props {
+  /** Identifica el contenido: al cambiar, el foco vuelve al título y el panel sube al inicio. */
+  clave: string
   titulo: ReactNode
   /** Contenido antes del título (ej. la etiqueta de demostración). */
   encabezado?: ReactNode
@@ -11,7 +13,7 @@ interface Props {
 }
 
 /** Panel inferior (bottom sheet) no modal: el mapa sigue usable detrás. */
-export function HojaInferior({ titulo, encabezado, children, onCerrar, onAltura }: Props) {
+export function HojaInferior({ clave, titulo, encabezado, children, onCerrar, onAltura }: Props) {
   const ref = useRef<HTMLElement>(null)
   const tituloRef = useRef<HTMLHeadingElement>(null)
   const idTitulo = useId()
@@ -40,7 +42,7 @@ export function HojaInferior({ titulo, encabezado, children, onCerrar, onAltura 
   useLayoutEffect(() => {
     tituloRef.current?.focus({ preventScroll: true })
     ref.current?.scrollTo({ top: 0 })
-  }, [titulo])
+  }, [clave])
 
   return (
     <section ref={ref} className="hoja" role="dialog" aria-modal="false" aria-labelledby={idTitulo}>

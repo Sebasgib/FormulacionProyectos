@@ -12,7 +12,12 @@ interface Props {
 /** Cuando el toque cae sobre varias rutas a la vez (calles compartidas). */
 export function SelectorRuta({ opciones, onElegir, onCerrar, onAltura }: Props) {
   return (
-    <HojaInferior titulo="Por aquí pasan varias rutas" onCerrar={onCerrar} onAltura={onAltura}>
+    <HojaInferior
+      clave={`selector:${opciones.map((o) => o.ruta.id).join(',')}`}
+      titulo="Por aquí pasan varias rutas"
+      onCerrar={onCerrar}
+      onAltura={onAltura}
+    >
       <ul className="selector">
         {opciones.map(({ opcion, ruta }) => (
           <li key={ruta.id}>

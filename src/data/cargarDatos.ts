@@ -1,4 +1,4 @@
-import type { ColeccionParaderos, ColeccionRutas, Paradero, Ruta } from './types'
+import type { ArchivoLugares, ColeccionParaderos, ColeccionRutas, Lugar, Paradero, Ruta } from './types'
 
 export interface DatosRutas {
   /** GeoJSON tal cual, para las fuentes del mapa. */
@@ -7,6 +7,7 @@ export interface DatosRutas {
   rutas: Map<string, Ruta>
   /** Paraderos de cada ruta, ya ordenados por `orden`. */
   paraderosPorRuta: Map<string, Paradero[]>
+  lugares: Lugar[]
 }
 
 const base = import.meta.env.BASE_URL
@@ -19,9 +20,10 @@ async function leerJson<T>(ruta: string): Promise<T> {
 }
 
 export async function cargarDatosRutas(): Promise<DatosRutas> {
-  const [rutasGeojson, paraderosGeojson] = await Promise.all([
+  const [rutasGeojson, paraderosGeojson, archivoLugares] = await Promise.all([
     leerJson<ColeccionRutas>('data/rutas.geojson'),
     leerJson<ColeccionParaderos>('data/paraderos.geojson'),
+    leerJson<ArchivoLugares>('data/lugares.json'),
   ])
 
   const rutas = new Map<string, Ruta>()
@@ -38,5 +40,5 @@ export async function cargarDatosRutas(): Promise<DatosRutas> {
   }
   for (const lista of paraderosPorRuta.values()) lista.sort((a, b) => a.orden - b.orden)
 
-  return { rutasGeojson, paraderosGeojson, rutas, paraderosPorRuta }
+  return { rutasGeojson, paraderosGeojson, rutas, paraderosPorRuta, lugares: archivoLugares.lugares }
 }

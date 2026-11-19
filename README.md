@@ -9,10 +9,32 @@ El mapa sale de un archivo PMTiles propio; no se usa tile.openstreetmap.org ni M
 
 ```bash
 npm install
-npm run dev       # desarrollo (el service worker no se activa en dev)
-npm run build     # compila a dist/
-npm run preview   # sirve dist/ en http://localhost:4173 (para probar offline e instalación)
+npm run dev             # desarrollo (el service worker no se activa en dev)
+npm run build           # compila a dist/
+npm run build:simulado  # igual, pero con el origen simulado en la USB (pruebas en PC)
+npm run preview         # sirve dist/ en http://localhost:4173 (para probar offline e instalación)
+npm test                # pruebas unitarias (Vitest)
+npm run lint
 ```
+
+## Búsqueda de rutas (en el teléfono)
+
+1. **Destino**: el campo "¿A dónde vas?" busca en `lugares.json` por nombre y alias, sin
+   distinguir mayúsculas ni tildes y tolerando errores de escritura (distancia de edición
+   propia en `src/data/buscarLugares.ts`: 1 error hasta 5 letras, 2 desde 6). También se
+   puede **mantener presionado el mapa** (o clic derecho en PC) para elegir un punto exacto.
+2. **Origen**: la ubicación del teléfono (Geolocation API), con una explicación antes de
+   pedir el permiso. Si se niega o no hay GPS, se elige con el buscador o tocando el mapa.
+   En `npm run dev` y `npm run build:simulado` el origen arranca en la Universidad Simón
+   Bolívar (7.88353, -72.50120); el build normal no incluye ese origen.
+3. **Cálculo** (`src/data/buscarRutas.ts`, función pura con pruebas): para cada ruta busca
+   el par de paraderos abordaje → bajada, con el abordaje **antes** que la bajada en el
+   recorrido (rutas de un solo sentido) y ambos a máximo **400 m** en línea recta del
+   origen y del destino. Ordena por caminata total y muestra hasta 3. Si ninguna sirve,
+   muestra la más cercana con un aviso. Sin trasbordos.
+
+**Privacidad (F-09):** la ubicación nunca se envía a ningún servidor ni se guarda; solo
+vive en la memoria de la página. Todo el cálculo usa los datos ya precargados.
 
 ## Estructura
 
@@ -29,9 +51,11 @@ public/
 scripts/
   gpx-a-geojson.mjs      convierte una traza GPX en una ruta
 src/
-  components/            UI: FichaRuta, SelectorRuta, HojaInferior, OfflineBadge
-  map/                   MapView, capas de rutas, estilo y configuración del mapa
-  data/                  tipos (types.ts), carga de datos y formato
+  components/            UI: PanelBusqueda, Buscador, PanelOrigen, Resultados,
+                         FichaRuta, SelectorRuta, HojaInferior, OfflineBadge
+  map/                   MapView, capas de rutas, marcadores, estilo y configuración
+  data/                  tipos, carga de datos, buscarLugares, buscarRutas (+ pruebas),
+                         ubicación, origen simulado y formato
   sw.ts                  service worker (precarga + RangeRequestsPlugin)
 ```
 
