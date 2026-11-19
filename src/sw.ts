@@ -32,8 +32,10 @@ registerRoute(new NavigationRoute(createHandlerBoundToURL('index.html')))
 
 // Rangos de glifos que no se precargan (caracteres poco comunes): se guardan
 // la primera vez que se piden.
+// Relativo al alcance del SW: la app puede vivir en una subcarpeta (GitHub Pages).
+const RUTA_FUENTES = `${new URL(self.registration.scope).pathname}fonts/`
 registerRoute(
-  ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/fonts/'),
+  ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith(RUTA_FUENTES),
   new CacheFirst({
     cacheName: 'glifos-extra',
     plugins: [new ExpirationPlugin({ maxEntries: 60 })],

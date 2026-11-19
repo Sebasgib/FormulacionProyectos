@@ -4,8 +4,13 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const THEME_COLOR = '#0F7B5F'
 
+// Ruta donde se publica la app. En local es "/"; en GitHub Pages el workflow
+// pasa BASE_PATH=/<nombre-del-repo>/ (la app vive en usuario.github.io/<repo>/).
+const BASE = process.env.BASE_PATH ?? '/'
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: BASE,
   plugins: [
     react(),
     VitePWA({
@@ -21,8 +26,8 @@ export default defineConfig({
         short_name: 'Stationnow',
         description: 'Rutas de buseta en Cúcuta, también sin conexión.',
         lang: 'es-CO',
-        start_url: '/',
-        scope: '/',
+        start_url: BASE,
+        scope: BASE,
         display: 'standalone',
         orientation: 'portrait',
         theme_color: THEME_COLOR,

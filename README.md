@@ -17,6 +17,23 @@ npm test                # pruebas unitarias (Vitest)
 npm run lint
 ```
 
+## Publicar en GitHub Pages
+
+GitHub Pages no puede servir el código fuente (`index.html` apunta a `/src/main.tsx`):
+hay que publicar la carpeta compilada `dist/`. Lo hace el workflow
+`.github/workflows/pages.yml` en cada push a `main` (lint, pruebas, build y despliegue).
+
+Configuración, una sola vez: en GitHub, **Settings → Pages → Build and deployment →
+Source: "GitHub Actions"**. La app queda en `https://<usuario>.github.io/<repo>/`.
+
+El workflow compila con `BASE_PATH=/<repo>/` para que todas las rutas (archivos, service
+worker, manifest) funcionen dentro de esa subcarpeta. Para probarlo en local:
+
+```bash
+BASE_PATH=/FormulacionProyectos/ npm run build
+BASE_PATH=/FormulacionProyectos/ npm run preview   # http://localhost:4173/FormulacionProyectos/
+```
+
 ## Búsqueda de rutas (en el teléfono)
 
 1. **Destino**: el campo "¿A dónde vas?" busca en `lugares.json` por nombre y alias, sin
