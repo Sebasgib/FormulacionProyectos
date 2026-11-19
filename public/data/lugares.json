@@ -1,0 +1,43 @@
+{
+  "nota": "Lugares de referencia. Coordenadas tomadas de OpenStreetMap (© colaboradores de OpenStreetMap).",
+  "lugares": [
+    { "id": "usb", "nombre": "Universidad Simón Bolívar (sede Cúcuta)", "alias": ["USB", "la Simón Bolívar", "Unisimón", "Universidad Simón Bolívar"], "coordenadas": [-72.5012, 7.88353], "tipo": "universidad" },
+    { "id": "ufps", "nombre": "Universidad Francisco de Paula Santander", "alias": ["UFPS", "la Francisco", "la Francisco de Paula"], "coordenadas": [-72.48721, 7.89834], "tipo": "universidad" },
+    { "id": "unilibre", "nombre": "Universidad Libre", "alias": ["la Libre", "Unilibre"], "coordenadas": [-72.49711, 7.91256], "tipo": "universidad" },
+    { "id": "udes", "nombre": "Universidad de Santander", "alias": ["UDES", "la UDES"], "coordenadas": [-72.49984, 7.91084], "tipo": "universidad" },
+    { "id": "unipamplona", "nombre": "Universidad de Pamplona (sede Cúcuta)", "alias": ["Unipamplona", "la de Pamplona"], "coordenadas": [-72.5024, 7.89283], "tipo": "universidad" },
+    { "id": "fesc", "nombre": "Fundación de Estudios Superiores Comfanorte", "alias": ["FESC", "la FESC", "Comfanorte"], "coordenadas": [-72.50201, 7.88168], "tipo": "universidad" },
+    { "id": "santo-tomas", "nombre": "Universidad Santo Tomás", "alias": ["la Santo Tomás", "USTA"], "coordenadas": [-72.49899, 7.87879], "tipo": "universidad" },
+    { "id": "uan", "nombre": "Universidad Antonio Nariño", "alias": ["UAN", "la Antonio Nariño"], "coordenadas": [-72.50201, 7.88123], "tipo": "universidad" },
+
+    { "id": "ventura-plaza", "nombre": "Centro Comercial Ventura Plaza", "alias": ["Ventura", "CC Ventura Plaza", "el Ventura"], "coordenadas": [-72.49666, 7.88779], "tipo": "centro_comercial" },
+    { "id": "unicentro", "nombre": "Centro Comercial Unicentro Cúcuta", "alias": ["Unicentro"], "coordenadas": [-72.49365, 7.9168], "tipo": "centro_comercial" },
+    { "id": "jardin-plaza", "nombre": "Centro Comercial Jardín Plaza", "alias": ["Jardín Plaza", "el Jardín"], "coordenadas": [-72.47993, 7.92017], "tipo": "centro_comercial" },
+    { "id": "gran-bulevar", "nombre": "Centro Comercial Gran Bulevar", "alias": ["Gran Bulevar", "el Bulevar"], "coordenadas": [-72.49843, 7.88639], "tipo": "centro_comercial" },
+    { "id": "bazar-la-sexta", "nombre": "Centro Comercial Bazar La Sexta", "alias": ["la Sexta", "Bazar la Sexta"], "coordenadas": [-72.50576, 7.89304], "tipo": "centro_comercial" },
+    { "id": "los-acacios", "nombre": "Centro Comercial Los Acacios", "alias": ["Los Acacios", "los Acacios"], "coordenadas": [-72.49162, 7.90567], "tipo": "centro_comercial" },
+
+    { "id": "huem", "nombre": "Hospital Universitario Erasmo Meoz", "alias": ["HUEM", "el Erasmo Meoz", "el Erasmo", "el hospital"], "coordenadas": [-72.49063, 7.90386], "tipo": "hospital" },
+    { "id": "clinica-santa-ana", "nombre": "Clínica Santa Ana", "alias": ["la Santa Ana"], "coordenadas": [-72.48881, 7.89128], "tipo": "hospital" },
+    { "id": "clinica-medical-duarte", "nombre": "Clínica Medical Duarte", "alias": ["la Duarte", "Medical Duarte"], "coordenadas": [-72.48474, 7.89939], "tipo": "hospital" },
+    { "id": "clinica-san-jose", "nombre": "Clínica San José", "alias": ["la San José"], "coordenadas": [-72.49665, 7.88544], "tipo": "hospital" },
+    { "id": "clinica-norte", "nombre": "Clínica Norte", "alias": ["la Clínica Norte"], "coordenadas": [-72.49789, 7.87938], "tipo": "hospital" },
+    { "id": "rudesindo-soto", "nombre": "Hospital Mental Rudesindo Soto", "alias": ["el Rudesindo", "Rudesindo Soto"], "coordenadas": [-72.51818, 7.87505], "tipo": "hospital" },
+
+    { "id": "centro", "nombre": "Centro", "alias": ["el Centro", "El Centro"], "coordenadas": [-72.50484, 7.88549], "tipo": "barrio" },
+    { "id": "caobos", "nombre": "Los Caobos", "alias": ["Caobos"], "coordenadas": [-72.49514, 7.88296], "tipo": "barrio" },
+    { "id": "quinta-bosch", "nombre": "Quinta Bosch", "alias": ["la Quinta Bosch"], "coordenadas": [-72.4986, 7.89893], "tipo": "barrio" },
+    { "id": "lleras", "nombre": "Barrio Lleras", "alias": ["Lleras", "el Lleras"], "coordenadas": [-72.50092, 7.89734], "tipo": "barrio" },
+    { "id": "atalaya", "nombre": "Ciudadela Juan Atalaya", "alias": ["Atalaya", "la Atalaya", "Juan Atalaya"], "coordenadas": [-72.52238, 7.90889], "tipo": "barrio" },
+    { "id": "san-mateo", "nombre": "San Mateo", "alias": ["San Mateo"], "coordenadas": [-72.48478, 7.88216], "tipo": "barrio" },
+    { "id": "la-libertad", "nombre": "La Libertad", "alias": ["Libertad", "la Libertad"], "coordenadas": [-72.47743, 7.88955], "tipo": "barrio" },
+    { "id": "la-riviera", "nombre": "La Riviera", "alias": ["Riviera"], "coordenadas": [-72.49032, 7.891], "tipo": "barrio" },
+    { "id": "motilones", "nombre": "Motilones", "alias": ["los Motilones"], "coordenadas": [-72.52351, 7.91781], "tipo": "barrio" },
+    { "id": "prados-del-este", "nombre": "Prados del Este", "alias": ["Prados"], "coordenadas": [-72.47263, 7.91158], "tipo": "barrio" },
+
+    { "id": "parque-santander", "nombre": "Parque Santander", "alias": ["el parque Santander", "el parque principal"], "coordenadas": [-72.50428, 7.88629], "tipo": "otro" },
+    { "id": "aeropuerto", "nombre": "Aeropuerto Internacional Camilo Daza", "alias": ["el aeropuerto", "Camilo Daza"], "coordenadas": [-72.51166, 7.92907], "tipo": "otro" },
+    { "id": "estadio", "nombre": "Estadio General Santander", "alias": ["el estadio", "el General Santander"], "coordenadas": [-72.50185, 7.89466], "tipo": "otro" },
+    { "id": "malecon", "nombre": "Malecón", "alias": ["el Malecón"], "coordenadas": [-72.48628, 7.89279], "tipo": "otro" }
+  ]
+}

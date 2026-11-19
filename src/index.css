@@ -47,3 +47,241 @@ body {
 .maplibregl-ctrl-attrib {
   font-size: 11px;
 }
+
+/* La atribución sube por encima del panel inferior para seguir visible.
+   Selector más específico: el CSS de MapLibre se carga después y fija bottom: 0. */
+.maplibregl-map .maplibregl-ctrl-bottom-right,
+.maplibregl-map .maplibregl-ctrl-bottom-left {
+  bottom: var(--alto-hoja, 0px);
+}
+
+.aviso-error {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
+  left: 12px;
+  right: 64px;
+  z-index: 10;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fde8e8;
+  color: #7f1d1d;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ---------- Panel inferior (bottom sheet) ----------
+   Texto ≥ 16 px y contraste WCAG AA o mejor:
+   #1a1a1a / #fff = 17:1 · #4a4a4a / #fff = 8,9:1 · #7c2d12 / #fef3c7 ≈ 9:1 */
+.hoja {
+  --texto: #1a1a1a;
+  --texto-secundario: #4a4a4a;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  max-width: 640px;
+  margin: 0 auto;
+  max-height: 58vh;
+  max-height: 58dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #ffffff;
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.45;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -4px 18px rgb(0 0 0 / 0.22);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.hoja__cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 12px 10px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.hoja__titulos {
+  flex: 1;
+  min-width: 0;
+}
+
+.hoja__titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.hoja__titulo:focus {
+  outline: none;
+}
+
+.hoja__cerrar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: #ececec;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.hoja__cerrar:focus-visible,
+.selector__boton:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+.hoja__cuerpo {
+  padding: 12px 18px 18px;
+}
+
+.muestra-color {
+  flex: none;
+  display: inline-block;
+  width: 10px;
+  height: 26px;
+  border-radius: 5px;
+}
+
+.etiqueta-demo {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 10px;
+  border: 2px solid #b45309;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #7c2d12;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ---------- Ficha de ruta ---------- */
+.ficha__datos {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.ficha__datos dt {
+  color: var(--texto-secundario);
+  font-weight: 600;
+}
+
+.ficha__datos dd {
+  margin: 0;
+  font-size: 18px;
+}
+
+.ficha__tarifa {
+  font-weight: 700;
+}
+
+.ficha__subtitulo {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.ficha__paraderos {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.ficha__paraderos li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+/* Línea vertical del color de la ruta uniendo los paraderos. */
+.ficha__paraderos li::before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-ruta);
+}
+
+.ficha__paraderos li:first-child::before {
+  top: 50%;
+}
+
+.ficha__paraderos li:last-child::before {
+  bottom: 50%;
+}
+
+.ficha__orden {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--color-ruta);
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ficha__paraderos li.destacado {
+  background: #e6f4ef;
+  font-weight: 700;
+}
+
+.ficha__tocado {
+  color: #0b5e48;
+}
+
+.ficha__verificacion {
+  margin: 0;
+  color: var(--texto-secundario);
+}
+
+/* ---------- Selector de varias rutas ---------- */
+.selector {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.selector__boton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 14px;
+  border: 1px solid #c8c8c8;
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--texto);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}

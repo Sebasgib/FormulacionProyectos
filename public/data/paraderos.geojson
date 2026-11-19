@@ -1,0 +1,454 @@
+{
+ "type": "FeatureCollection",
+ "nota": "Datos de DEMOSTRACIÓN generados con OSRM sobre la red vial de OpenStreetMap (© colaboradores de OpenStreetMap). No son recorridos reales.",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p1",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Parque de Ceiba II",
+    "orden": 1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.49819,
+     7.905326
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p2",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Quinta Bosch, por la Avenida 0",
+    "orden": 2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.498605,
+     7.898617
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p3",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Barrio Lleras",
+    "orden": 3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.500187,
+     7.897477
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p4",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Barrio Latino",
+    "orden": 4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.50104,
+     7.888976
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p5",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Parque Santander",
+    "orden": 5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.504189,
+     7.885793
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p6",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Frente a la Universidad Simón Bolívar",
+    "orden": 6
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.501083,
+     7.883552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p7",
+    "rutaId": "ruta-7-centro",
+    "nombre": "CC Ventura Plaza",
+    "orden": 7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.496556,
+     7.887148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-7-centro-p8",
+    "rutaId": "ruta-7-centro",
+    "nombre": "Barrio Blanco",
+    "orden": 8
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.498851,
+     7.879428
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p1",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Atalaya primera etapa",
+    "orden": 1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.523195,
+     7.906669
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p2",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Chapinero",
+    "orden": 2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.513985,
+     7.907965
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p3",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Sevilla",
+    "orden": 3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.50853,
+     7.902551
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p4",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Pescadero",
+    "orden": 4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.503957,
+     7.902001
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p5",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Parque Santander",
+    "orden": 5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.504189,
+     7.885793
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p6",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "Frente a la Universidad Simón Bolívar",
+    "orden": 6
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.501083,
+     7.883552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-2a-atalaya-p7",
+    "rutaId": "ruta-2a-atalaya",
+    "nombre": "CC Ventura Plaza",
+    "orden": 7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.496556,
+     7.887148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p1",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "La Magdalena",
+    "orden": 1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.520412,
+     7.879409
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p2",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "Cundinamarca",
+    "orden": 2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.515277,
+     7.8853
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p3",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "Parque Santander",
+    "orden": 3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.504189,
+     7.885793
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p4",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "Frente a la Universidad Simón Bolívar",
+    "orden": 4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.501083,
+     7.883552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p5",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "CC Ventura Plaza",
+    "orden": 5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.496556,
+     7.887148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-12-san-mateo-p6",
+    "rutaId": "ruta-12-san-mateo",
+    "nombre": "San Mateo",
+    "orden": 6
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.484879,
+     7.882178
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p1",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "El Contento",
+    "orden": 1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.502782,
+     7.881293
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p2",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "Frente a la Universidad Simón Bolívar",
+    "orden": 2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.501083,
+     7.883552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p3",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "CC Ventura Plaza",
+    "orden": 3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.496556,
+     7.887148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p4",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "La Riviera",
+    "orden": 4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.490307,
+     7.890694
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p5",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "UFPS, Avenida Gran Colombia",
+    "orden": 5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.488807,
+     7.898106
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p6",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "Torcoroma",
+    "orden": 6
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.475476,
+     7.894264
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruta-5-libertad-p7",
+    "rutaId": "ruta-5-libertad",
+    "nombre": "La Libertad",
+    "orden": 7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -72.47749,
+     7.889366
+    ]
+   }
+  }
+ ]
+}

@@ -41,7 +41,7 @@ export default defineConfig({
       injectManifest: {
         // App + mapa completo (teselas, fuentes y sprites) quedan en caché
         // desde la primera visita.
-        globPatterns: ['**/*.{js,mjs,css,html,svg,png,webmanifest,pbf,json,pmtiles}'],
+        globPatterns: ['**/*.{js,mjs,css,html,svg,png,webmanifest,pbf,json,geojson,pmtiles}'],
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
       },
     }),
